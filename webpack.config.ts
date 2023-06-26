@@ -5,7 +5,7 @@ import { BuildEnv, BuildPaths } from './config/build/types/config';
 
 export default function (env: BuildEnv): Configuration {
   const paths: BuildPaths = {
-    entryPoint: path.resolve(__dirname, 'src', 'index.ts'),
+    entryPoint: path.resolve(__dirname, 'src', 'index.tsx'),
     outputDirectory: path.resolve(__dirname, 'build'),
     htmlFile: path.resolve(__dirname, 'public', 'index.html'),
   };
