@@ -4,3 +4,4 @@ function demo(): void {
 
 demo();
 
+document.body.innerHTML = `dev server is working`;

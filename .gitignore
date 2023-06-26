@@ -1,5 +1,5 @@
 .idea
-build
+/build
 
 /* the following is Node template from GitHub */
 # Logs
