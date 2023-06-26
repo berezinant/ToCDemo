@@ -1,0 +1,31 @@
+{
+  "name": "tocdemo",
+  "version": "0.0.1",
+  "description": "Table of contents demo component",
+  "main": "index.ts",
+  "scripts": {
+    "webpack": "webpack",
+    "dev": "npm run webpack",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/berezinant/ToCDemo.git"
+  },
+  "author": "berezinant",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/berezinant/ToCDemo/issues"
+  },
+  "homepage": "https://github.com/berezinant/ToCDemo#readme",
+  "devDependencies": {
+    "@types/node": "^20.3.1",
+    "@types/webpack": "^5.28.1",
+    "html-webpack-plugin": "^5.5.3",
+    "ts-loader": "^9.4.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.3",
+    "webpack": "^5.88.0",
+    "webpack-cli": "^5.1.4"
+  }
+}
