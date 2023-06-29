@@ -1,4 +1,4 @@
-import { JSX, Children, useMemo, useState } from 'react';
+import { JSX, ReactNode, useMemo, useState } from 'react';
 import { LOCAL_STORAGE_THEME_KEY, Theme, ThemeContext } from './ThemeContext';
 
 const getInitialTheme = () => {
@@ -6,18 +6,16 @@ const getInitialTheme = () => {
   return savedTheme || Theme.LIGHT;
 };
 
-export function ThemeProvider({ children }: {children: any}): JSX.Element {
+export function ThemeProvider({ children }: { children: ReactNode }): JSX.Element {
   const [theme, setTheme] = useState<Theme>(getInitialTheme);
 
   const defaultContextValue = useMemo(
     () => ({
-        theme,
-        setTheme,
-      }
-    ), [theme,]
+      theme,
+      setTheme,
+    }),
+    [theme]
   );
 
-  return (
-    <ThemeContext.Provider value={defaultContextValue}>{children}</ThemeContext.Provider>
-  );
-};
+  return <ThemeContext.Provider value={defaultContextValue}>{children}</ThemeContext.Provider>;
+}
