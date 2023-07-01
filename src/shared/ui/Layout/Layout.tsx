@@ -1,20 +1,28 @@
-import { JSX, ReactNode } from 'react';
+import { JSX } from 'react';
+import { Footer } from '../../../widgets/Footer';
+import { Header } from '../../../widgets/Header';
+import { Navigation } from '../../../widgets/Navigation';
 import classNames from './styles.module.scss';
 
-type LayoutProps = {
-  header?: ReactNode;
-  nav?: ReactNode;
-  main?: ReactNode;
-  footer?: ReactNode;
-};
+interface LayoutProps {
+  header?: JSX.Element;
+  nav?: JSX.Element;
+  children?: JSX.Element | JSX.Element[];
+  footer?: JSX.Element;
+}
 
-export function Layout({ header, main, nav, footer }: LayoutProps): JSX.Element {
+export function Layout({
+  header = Header(),
+  children,
+  nav = Navigation(),
+  footer = Footer(),
+}: LayoutProps): JSX.Element {
   return (
     <div className={classNames.layout}>
-      <header>{header}</header>
-      <nav>{nav}</nav>
-      <main>{main}</main>
-      <footer>{footer}</footer>
+      <header className={classNames.header}>{header}</header>
+      <nav className={classNames.nav}>{nav}</nav>
+      <main>{children}</main>
+      <footer className={classNames.footer}>{footer}</footer>
     </div>
   );
 }

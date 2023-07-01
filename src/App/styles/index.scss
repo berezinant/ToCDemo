@@ -1,11 +1,17 @@
 @import 'reset';
 @import 'fonts';
 @import 'palette';
+@import 'sizes';
 @import 'themes/dark';
 @import 'themes/light';
 
+* {
+  box-sizing: border-box;
+}
+
 .app {
   min-height: 100vh;
-  background-color: var(--background-color);
-  color: var(--primary-text-color);
+  background-color: var(--background-color-1);
+  color: var(--text-color-1);
+  font-family: 'JetBrains Sans', sans-serif;
 }
