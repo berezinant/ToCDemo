@@ -1,25 +1,25 @@
 import { JSX } from 'react';
 import { Link, Route, Routes } from 'react-router-dom';
-import { useTheme } from '../theme/useTheme';
-import { ToCRow } from '../ui/ToCRow/ToCRow';
+import { ArticlePage } from '../pages/article/ArticlePage';
+import { useTheme } from './theme/useTheme';
+import './styles/index.scss';
 
 export function App(): JSX.Element {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
   return (
     <div className={`app ${theme}`}>
-      <Link to="/">Home</Link>
-      <Link to="page-1">Page 1</Link>
-      <button onClick={toggleTheme}>Toggle theme</button>
       <Routes>
+        <Route path="/article/:name" element={<ArticlePage></ArticlePage>} />
+        <Route path="/article" element={<ArticlePage></ArticlePage>} />
         <Route
-          path="/page-1"
+          path="/"
           element={
             <h1>
-              Page 1<ToCRow></ToCRow>
+              Home page
+              <Link to="/article/first">articles</Link>
             </h1>
           }
         />
-        <Route path="/" element={<h1>Home page</h1>} />
       </Routes>
     </div>
   );
