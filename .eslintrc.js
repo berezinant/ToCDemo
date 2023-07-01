@@ -31,12 +31,15 @@ module.exports = {
       version: 'detect',
     },
   },
-  plugins: ['@typescript-eslint', 'react', 'prettier'],
+  plugins: ['@typescript-eslint', 'react', 'prettier', 'import', 'react-hooks'],
   rules: {
     indent: ['error', 2],
     'linebreak-style': ['error', 'unix'],
     quotes: ['error', 'single'],
     semi: ['error', 'always'],
     'react/react-in-jsx-scope': 'off',
+    'import/order': ['error', { alphabetize: { order: 'asc' } }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
   },
 };
