@@ -1,0 +1,16 @@
+:root {
+  --gap-base: 8px;
+  --gap-0-5: calc(var(--gap-base) * 0.5);
+  --gap-1: calc(var(--gap-base) * 1);
+  --gap-1-5: calc(var(--gap-base) * 1.5);
+  --gap-2: calc(var(--gap-base) * 2);
+  --gap-2-75: calc(var(--gap-base) * 2.75);
+  --gap-3: calc(var(--gap-base) * 3);
+  --gap-4: calc(var(--gap-base) * 4);
+  --gap-5: calc(var(--gap-base) * 5);
+  --gap-6: calc(var(--gap-base) * 6);
+  --gap-7: calc(var(--gap-base) * 7);
+  --gap-8: calc(var(--gap-base) * 8);
+  --gap-9: calc(var(--gap-base) * 9);
+  --gap-10: calc(var(--gap-base) * 10);
+}
