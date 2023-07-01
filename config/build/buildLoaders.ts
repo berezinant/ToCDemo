@@ -6,7 +6,7 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
   const typescriptLoader: RuleSetRule = {
     test: /.*\.tsx?$/,
     use: 'ts-loader',
-    exclude: /node_modules/
+    exclude: /node_modules/,
   };
 
   const cssLoader = {
@@ -20,11 +20,24 @@ export function buildLoaders({ isDev }: BuildOptions): RuleSetRule[] {
             auto: (resourcePath: string) => resourcePath.includes('.module.'),
             localIdentName: isDev ? '[path][name]__[local]' : '[hash:base64:8]',
           },
-        }
+        },
       },
       'sass-loader',
     ],
   };
 
-  return [typescriptLoader, cssLoader];
+  const fileLoader = {
+    test: /\.(woff|woff2|eot|ttf|otf)$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+          outputPath: 'fonts/',
+        },
+      },
+    ],
+  };
+
+  return [typescriptLoader, cssLoader, fileLoader];
 }
