@@ -13,7 +13,8 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     output: {
       filename: '[name].[hash].js',
       path: paths.outputDirectory,
-      clean: true
+      clean: true,
+      publicPath: '/',
     },
     plugins: buildPlugins(options),
     module: {
@@ -24,4 +25,3 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     devServer: isDev ? buildDevServer(options) : undefined,
   };
 }
-
