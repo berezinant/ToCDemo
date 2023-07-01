@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import { ArticlePage } from '../pages/article/ArticlePage';
 import { useTheme } from './theme/useTheme';
 import './styles/index.scss';
@@ -9,8 +9,6 @@ export function App(): JSX.Element {
   return (
     <div className={`app ${theme}`}>
       <Routes>
-        <Route path="/article/:name" element={<ArticlePage></ArticlePage>} />
-        <Route path="/article" element={<ArticlePage></ArticlePage>} />
         <Route
           path="/"
           element={
@@ -20,6 +18,9 @@ export function App(): JSX.Element {
             </h1>
           }
         />
+        <Route path="/article" element={<ArticlePage></ArticlePage>} />
+        <Route path="/article/:name/" element={<ArticlePage></ArticlePage>} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </div>
   );
