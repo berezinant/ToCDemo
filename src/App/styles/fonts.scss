@@ -1,6 +1,12 @@
 @font-face {
   font-family: 'JetBrains Sans';
-  src: url('../../../assests/fonts/JetBrainsSans.woff2') format('woff2');
+  src: url('../../../assests/fonts/JetBrainsSans-Regular.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
+}
+
+:root {
+  --font-family: JetBrains Sans, Inter, system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Droid Sans, Helvetica Neue, Arial, sans-serif;
+  --font-m: 400 13px/20px var(--font-family);
 }
