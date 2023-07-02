@@ -2,7 +2,7 @@ import { JSX } from 'react';
 import { Footer } from '../../../widgets/Footer';
 import { Header } from '../../../widgets/Header';
 import { Navigation } from '../../../widgets/Navigation';
-import classNames from './styles.module.scss';
+import styles from './styles.module.scss';
 
 interface LayoutProps {
   header?: JSX.Element;
@@ -18,11 +18,11 @@ export function Layout({
   footer = Footer(),
 }: LayoutProps): JSX.Element {
   return (
-    <div className={classNames.layout}>
-      <header className={classNames.header}>{header}</header>
-      <nav className={classNames.nav}>{nav}</nav>
-      <main>{children}</main>
-      <footer className={classNames.footer}>{footer}</footer>
+    <div className={styles.layout}>
+      <header className={styles.header}>{header}</header>
+      <nav className={styles.nav}>{nav}</nav>
+      <main className={styles.main}>{children}</main>
+      <footer className={styles.footer}>{footer}</footer>
     </div>
   );
 }

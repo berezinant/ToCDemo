@@ -1,12 +1,12 @@
 import { JSX } from 'react';
-import { ToggleThemeButton } from '../../features/ToggleThemeButton';
-import classNames from './styles.module.scss';
+import { ToggleThemeButton } from '../../features/theme/ui/ToggleThemeButton';
+import styles from './styles.module.scss';
 
 export function Header(): JSX.Element {
   return (
-    <div className={classNames.header}>
-      <p>Header</p>
-      <ul className={classNames.features}>
+    <div className={styles.header}>
+      <p>Product name 2023.1</p>
+      <ul className={styles.features}>
         <li>
           <ToggleThemeButton />
         </li>
