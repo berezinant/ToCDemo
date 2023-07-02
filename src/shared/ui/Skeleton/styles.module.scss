@@ -1,0 +1,26 @@
+.skeleton {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-2);
+
+  .item {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--background-color-2);
+    border-radius: 4px;
+    animation: pulse 1.5s infinite ease-in-out;
+
+    &:nth-child(2n) {
+      width: 91%;
+    }
+
+    &:nth-child(3n) {
+      width: 84%;
+    }
+
+    &:nth-child(5n) {
+      width: 100%;
+    }
+  }
+}
