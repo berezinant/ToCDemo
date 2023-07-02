@@ -1,10 +1,14 @@
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import classNames from './styles.module.scss';
+import { TocView } from '../../entities/Toc/ui/View';
+import { Skeleton } from '../../shared/ui/Skeleton';
+import styles from './styles.module.scss';
 
 export function Navigation(): JSX.Element {
   return (
-    <ul className={classNames.navigation}>
+    <ul className={styles.navigation}>
+      <Skeleton />
+      <TocView />
       <li>
         <Link to="/">Home</Link>
       </li>
