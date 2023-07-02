@@ -1,0 +1,78 @@
+.row {
+  display: block;
+  padding: var(--gap-1) var(--gap-2-75);
+  background-color: var(--background-color-1);
+  transition: background-color var(--transition-duration-fast) var(--transition-timing);
+  text-decoration: none;
+  font: var(--font-m);
+  color: var(--text-color);
+
+  &:focus {
+    outline: 2px inset var(--color-accent);
+  }
+
+  &:hover {
+    background-color: var(--background-color-4);
+  }
+
+  &.expanded {
+    background-color: var(--background-color-2);
+
+    &:hover {
+      background-color: var(--background-color-4);
+    }
+  }
+
+  &.active,
+  &.active.expanded,
+  &.active.expanded:hover {
+    background-color: var(--color-accent);
+    color: var(--text-color-stable);
+  }
+}
+
+.title {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--gap-0-5);
+
+  @for $i from 0 through 8 {
+    &.indent-#{$i} {
+      $indent-width: calc(var(--gap-2) * ($i + 1));
+      margin-left: $indent-width;
+      width: calc(100% - $indent-width);
+    }
+  }
+}
+
+.icon {
+  position: absolute;
+  left: calc(var(--gap-2-5) * -1);
+  width: var(--gap-2);
+  height: var(--gap-2);
+  transform: rotate(-90deg);
+  transition: transform var(--transition-duration-default) var(--transition-timing);
+
+  &.active {
+    --text-color: var(--text-color-stable);
+  }
+
+  &.expanded {
+    transform: rotate(0deg);
+  }
+}
+
+.children {
+  height: 0;
+  max-height: 0;
+  overflow: hidden;
+
+  &.expanded {
+    height: auto;
+    max-height: 100vh;
+    transition: max-height var(--transition-duration-default) var(--transition-timing);
+    background-color: var(--background-color-2);
+  }
+}
