@@ -3,13 +3,15 @@ export type TocData = {
   topLevelIds: string[];
 };
 
+type TocPageId = string;
+
 type ToCEntities = {
-  pages: ToCPage[];
+  pages: Record<TocPageId, ToCPage>;
 };
 
 export type ToCPage = {
   /** unique element identification */
-  id: number;
+  id: TocPageId;
   /** page title, used as a text for TOC link */
   title: string;
   /** relative path to a page, href for a link */
@@ -24,20 +26,20 @@ export type ToCPage = {
 
 function isTocPage(data: any): data is ToCPage {
   return (
-    typeof data.id === 'number' &&
+    typeof data.id === 'string' &&
     typeof data.title === 'string' &&
-    typeof data.url === 'string' &&
     typeof data.level === 'number' &&
     typeof data.parentId === 'string' &&
-    Array.isArray(data.pages)
+    (typeof data.url === 'string' || typeof data.url === 'undefined') &&
+    (typeof data.pages === 'undefined' || Array.isArray(data.pages))
   );
 }
 
 export function isTocData(data: any): data is TocData {
   return (
-    typeof data.entities === 'object' &&
     Array.isArray(data.topLevelIds) &&
-    Array.isArray(typeof data.entities.pages) &&
-    data.entities.pages.every(isTocPage)
+    typeof data.entities === 'object' &&
+    typeof data.entities.pages === 'object' &&
+    Object.values(data.entities.pages).every(isTocPage)
   );
 }
