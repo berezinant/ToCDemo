@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import { tocTransport, TocData, TocView } from '../../entities/Toc';
+import { tocTransport, TocData, TocView } from '../../entities/toc';
 import { useFetch } from '../../shared/hooks';
 import { Skeleton } from '../../shared/ui';
 import styles from './styles.module.scss';
