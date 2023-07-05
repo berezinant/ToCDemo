@@ -5,7 +5,9 @@ const endpoint = 'https://www.jetbrains.com/help/idea/2023.1/HelpTOC.json';
 function buildTocTransport() {
   return {
     getTocData: async (): Promise<TocData> => {
-      return fetch(endpoint)
+      return fetch(endpoint, {
+        mode: 'cors',
+      })
         .then((response) => {
           return response.json();
         })

@@ -1,7 +1,12 @@
 import { JSX, useState } from 'react';
+import { TocData } from '../../models/toc';
 import { TocRow } from '../Row';
 
-export function TocView(): JSX.Element {
+interface TocViewProps {
+  data: TocData;
+}
+
+export function TocView(props: TocViewProps): JSX.Element {
   const [expandedNodes, setIsExpanded] = useState<Record<string, boolean>>({ Two: true });
 
   const toggleNode = (title: any) => {
