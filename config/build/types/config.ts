@@ -1,14 +1,15 @@
 type BuildMode = 'production' | 'development';
 
 export interface BuildPaths {
-  entryPoint: string,
-  outputDirectory: string,
-  htmlFile: string,
+  entryPoint: string;
+  outputDirectory: string;
+  publicDirectory: string;
+  htmlFile: string;
 }
 
 export interface BuildEnv {
-  port: number,
-  mode: BuildMode,
+  port: number;
+  mode: BuildMode;
 }
 
 export interface BuildOptions {

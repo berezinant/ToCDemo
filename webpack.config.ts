@@ -7,6 +7,7 @@ export default function (env: BuildEnv): Configuration {
   const paths: BuildPaths = {
     entryPoint: path.resolve(__dirname, 'src', 'index.tsx'),
     outputDirectory: path.resolve(__dirname, 'build'),
+    publicDirectory: path.resolve(__dirname, 'public'),
     htmlFile: path.resolve(__dirname, 'public', 'index.html'),
   };
 

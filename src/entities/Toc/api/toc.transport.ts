@@ -1,17 +1,13 @@
 import { isTocData, TocData } from '../models/toc';
 
-const endpoint = 'https://www.jetbrains.com/help/idea/2023.1/HelpTOC.json';
+const endpoint = `${process.env.API_URL}/data.json`;
 
 function buildTocTransport() {
   return {
     getTocData: async (): Promise<TocData> => {
-      return fetch(endpoint, {
-        mode: 'cors',
-      })
-        .then((response) => {
-          return response.json();
-        })
-        .then((data) => {
+      return fetch(endpoint)
+        .then((response) => response.json())
+        .then((data: unknown) => {
           if (isTocData(data)) {
             return data;
           } else {
