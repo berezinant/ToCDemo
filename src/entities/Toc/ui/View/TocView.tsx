@@ -1,5 +1,5 @@
 import { JSX, useState } from 'react';
-import { TocData } from '../../models/toc';
+import { TocData } from '../../models';
 import { TocRow } from '../Row';
 
 interface TocViewProps {

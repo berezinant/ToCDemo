@@ -1,6 +1,6 @@
 import { JSX } from 'react';
 import { useParams } from 'react-router-dom';
-import { Layout } from '../../shared/ui/Layout';
+import { Layout } from '../../shared/ui';
 
 interface ArticlePageProps {
   title?: string;

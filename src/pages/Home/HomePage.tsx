@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { Layout } from '../../shared/ui/Layout';
+import { Layout } from '../../shared/ui';
 
 export function HomePage(): JSX.Element {
   return (

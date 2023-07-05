@@ -1,10 +1,8 @@
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import { tocTransport } from '../../entities/Toc/api/toc.transport';
-import { TocData } from '../../entities/Toc/models/toc';
-import { TocView } from '../../entities/Toc/ui/View';
-import { useFetch } from '../../shared/hooks/useFetch';
-import { Skeleton } from '../../shared/ui/Skeleton';
+import { tocTransport, TocData, TocView } from '../../entities/Toc';
+import { useFetch } from '../../shared/hooks';
+import { Skeleton } from '../../shared/ui';
 import styles from './styles.module.scss';
 
 export function Navigation(): JSX.Element {
