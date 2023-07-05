@@ -1,4 +1,4 @@
-import { isTocData, TocData } from '../models/toc';
+import { isTocData, TocData } from '../models';
 
 const endpoint = `${process.env.API_URL}/data.json`;
 

@@ -1,7 +1,7 @@
 import cx from 'classnames';
 import { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import { Icon } from '../../../../shared/ui/Icon';
+import { Icon } from '../../../../shared/ui';
 import styles from './styles.module.scss';
 
 interface TocRowProps {

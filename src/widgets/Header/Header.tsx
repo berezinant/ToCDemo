@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { ToggleThemeButton } from '../../features/theme/ui/ToggleThemeButton';
+import { ToggleThemeButton } from '../../app';
 import styles from './styles.module.scss';
 
 export function Header(): JSX.Element {
