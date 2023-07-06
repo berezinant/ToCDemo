@@ -6,39 +6,54 @@ import styles from './styles.module.scss';
 
 interface TocRowProps {
   title: string;
+  to?: string | undefined;
   isExpanded?: boolean;
   isActive?: boolean;
-  children?: JSX.Element | JSX.Element[];
+  children?: JSX.Element | JSX.Element[] | null;
   onClick?: () => void;
   indent?: number;
 }
 
 export function TocRow({
   title,
+  to,
   isExpanded,
   isActive,
   onClick = () => null,
   children,
   indent = 0,
 }: TocRowProps): JSX.Element {
+  const className = cx(styles.row, { [styles.expanded]: isExpanded, [styles.active]: isActive });
+  const hasChildren = children ? (Array.isArray(children) ? children.length > 0 : true) : false;
+  const titleRow = (
+    <span className={cx(styles.title, { [styles[`indent-${indent}`]]: true })}>
+      {hasChildren && (
+        <Icon
+          name="arrow-down"
+          className={cx(styles.icon, { [styles.expanded]: isExpanded, [styles.active]: isActive })}
+        />
+      )}
+      {title}
+    </span>
+  );
   return (
     <>
-      <Link
-        to={''}
-        onClick={onClick}
-        className={cx(styles.row, { [styles.expanded]: isExpanded, [styles.active]: isActive })}
-      >
-        <span className={cx(styles.title, { [styles[`indent-${indent}`]]: true })}>
-          {children && (
-            <Icon
-              name="arrow-down"
-              className={cx(styles.icon, { [styles.expanded]: isExpanded, [styles.active]: isActive })}
-            />
-          )}
-          {title}
-        </span>
-      </Link>
-      {children && (
+      {to !== undefined ? (
+        <Link to={to} onClick={onClick} className={className}>
+          {titleRow}
+        </Link>
+      ) : (
+        <div
+          onClick={onClick}
+          onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
+          className={className}
+          tabIndex={0}
+          role="button"
+        >
+          {titleRow}
+        </div>
+      )}
+      {hasChildren && (
         <div className={cx(styles.children, { [styles.expanded]: isExpanded })}>{isExpanded && children}</div>
       )}
     </>

@@ -6,8 +6,9 @@
   text-decoration: none;
   font: var(--font-m);
   color: var(--text-color);
+  cursor: pointer;
 
-  &:focus {
+  &:focus-visible {
     outline: 2px inset var(--color-accent);
   }
 
