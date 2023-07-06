@@ -54,7 +54,7 @@ export function TocRow({
         </div>
       )}
       {hasChildren && (
-        <div className={cx(styles.children, { [styles.expanded]: isExpanded })}>{isExpanded && children}</div>
+        <ul className={cx(styles.children, { [styles.expanded]: isExpanded })}>{isExpanded && children}</ul>
       )}
     </>
   );

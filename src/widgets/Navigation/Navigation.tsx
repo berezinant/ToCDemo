@@ -1,27 +1,21 @@
 import { JSX } from 'react';
-import { Link } from 'react-router-dom';
-import { tocTransport, TocData, TocView } from '../../entities/toc';
+import { tocTransport, TocDataDto, TocPageDto } from '../../entities/toc';
 import { useFetch } from '../../shared/hooks';
 import { Skeleton } from '../../shared/ui';
+import { TocTreeView } from '../TocTree';
 import styles from './styles.module.scss';
 
 export function Navigation(): JSX.Element {
-  const { data: tocData, error, loading } = useFetch<TocData>(tocTransport.getTocData);
-
+  const { data: tocData, error, loading } = useFetch<TocDataDto>(tocTransport.getTocData);
+  const isRowActive = (page: TocPageDto) => {
+    const url = window.location.pathname;
+    return url.endsWith(page.url);
+  };
   return (
     <ul className={styles.navigation}>
-      {error && <div>error view: {error.toString()}</div>}
+      {error && <div>{error.toString()}</div>}
       {loading && <Skeleton />}
-      {!loading && tocData && <TocView data={tocData} />}
-      <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
-        <Link to="/article/first">first article</Link>
-      </li>
-      <li>
-        <Link to="/article/second">second article</Link>
-      </li>
+      {!loading && tocData && <TocTreeView data={tocData} baseUrl="/article" isRowActive={isRowActive} />}
     </ul>
   );
 }
