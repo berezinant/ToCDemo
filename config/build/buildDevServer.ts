@@ -5,7 +5,9 @@ export function buildDevServer({ port, paths }: BuildOptions): WebpackDevServerC
   return {
     port,
     open: true,
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [{ from: /.*\.html$/, to: '/index.html' }],
+    },
     static: {
       directory: paths.publicDirectory,
     },
