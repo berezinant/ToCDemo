@@ -21,7 +21,7 @@ export type TocPageDto = {
   /** parent id pointer used to determine where to nest the element */
   parentId: string;
   /** list of nested pages ids */
-  pages: string[];
+  pages?: string[];
 };
 
 function isTocPageDto(data: any): data is TocPageDto {

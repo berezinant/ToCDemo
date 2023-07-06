@@ -1,2 +1,2 @@
 export * from './Row';
-export * from './View';
+export * from '../../../widgets/TocTree/ui/View';
