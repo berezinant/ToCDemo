@@ -1,6 +1,6 @@
 import { TocDataDto, TocPageDto } from '../../../entities/toc';
 
-interface TreeNode extends TocPageDto {
+export interface TreeNode extends TocPageDto {
   children?: TreeNode[];
 }
 
