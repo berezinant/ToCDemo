@@ -6,7 +6,10 @@ export function findOccurrences(string: string, query: string): number[][] {
   const occurrences: number[][] = [];
   let index = -1;
 
-  while ((index = string.indexOf(query, index + 1)) !== -1) {
+  const lowerCaseString = string.toLocaleLowerCase();
+  const lowerCaseQuery = query.toLocaleLowerCase();
+
+  while ((index = lowerCaseString.toLocaleLowerCase().indexOf(lowerCaseQuery, index + 1)) !== -1) {
     occurrences.push([index, index + query.length - 1]);
   }
 
