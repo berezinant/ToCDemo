@@ -27,4 +27,11 @@ describe('findOccurrences', () => {
       [8, 10],
     ]);
   });
+
+  it('should find occurrences in a case insensitive way', () => {
+    expect(findOccurrences('foo bar foo', 'FOO')).toEqual([
+      [0, 2],
+      [8, 10],
+    ]);
+  });
 });
