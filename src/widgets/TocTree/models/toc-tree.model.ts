@@ -1,6 +1,8 @@
 import { TocDataDto, TocPageDto } from '../../../entities/toc';
 
 export interface TreeNode extends TocPageDto {
+  isExpanded?: boolean;
+  occurrences?: number[][];
   children?: TreeNode[];
 }
 
