@@ -1,6 +1,7 @@
 import cx from 'classnames';
-import { JSX, ReactNode, useState } from 'react';
+import { JSX, ReactNode, RefObject, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useScrollIntoView } from '../../../../shared/hooks';
 import { Icon } from '../../../../shared/ui';
 import styles from './styles.module.scss';
 
@@ -16,6 +17,13 @@ interface TocRowProps {
 export function TocRow({ title, to, defaultExpanded, isActive, children, indent = 0 }: TocRowProps): JSX.Element {
   const [isExpanded, setIsExpanded] = useState<boolean>(!!defaultExpanded);
   const toggleExpanded = () => setIsExpanded((prev) => !prev);
+
+  useEffect(() => {
+    setIsExpanded(!!defaultExpanded);
+  }, [defaultExpanded]);
+
+  const ref = useScrollIntoView(!!isActive);
+
   const className = cx(styles.row, { [styles.expanded]: isExpanded, [styles.active]: isActive });
   const hasChildren = children ? (Array.isArray(children) ? children.length > 0 : true) : false;
   const titleRow = (
@@ -29,14 +37,16 @@ export function TocRow({ title, to, defaultExpanded, isActive, children, indent 
       {title}
     </span>
   );
+
   return (
     <>
       {to !== undefined ? (
-        <Link to={to} onClick={toggleExpanded} className={className}>
+        <Link to={to} onClick={toggleExpanded} className={className} ref={ref as RefObject<HTMLAnchorElement>}>
           {titleRow}
         </Link>
       ) : (
         <div
+          ref={ref as RefObject<HTMLDivElement>}
           onClick={toggleExpanded}
           onKeyDown={(e) => e.key === 'Enter' && toggleExpanded()}
           className={className}
