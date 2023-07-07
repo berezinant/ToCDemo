@@ -1,0 +1,10 @@
+.button {
+  cursor: pointer;
+  font-size: 32px;
+  background: none;
+  border: none;
+
+  &:focus-visible {
+    outline: 2px inset var(--color-accent);
+  }
+}
