@@ -1,17 +1,13 @@
 import { JSX } from 'react';
 import { TocRow, TocPageDto } from '../../../../entities/toc';
 import { EmptyView } from '../../../../shared/ui';
-import { mapSubstrings } from '../../../../shared/utils/map-substrings';
 import { TreeNode } from '../../models';
+import { Title } from '../Title';
 
 interface TocTreeViewProps {
   tocTree: TreeNode[];
   baseUrl?: string;
   isRowActive: (page: TocPageDto) => boolean;
-}
-
-function highlightMap(string: string): string {
-  return `<span class="highlight">${string}</span>`;
 }
 
 export function TocTreeView({ tocTree, baseUrl = '', isRowActive = () => false }: TocTreeViewProps): JSX.Element {
@@ -31,15 +27,8 @@ export function TocTreeView({ tocTree, baseUrl = '', isRowActive = () => false }
   const renderRow = (pageItem: TreeNode): JSX.Element => (
     <li key={pageItem.id}>
       <TocRow
-        title={
-          <span
-            dangerouslySetInnerHTML={{
-              __html: mapSubstrings(pageItem.title, pageItem.occurrences || [], highlightMap),
-            }}
-          />
-        }
+        title={<Title pageItem={pageItem} />}
         isExpanded={!!pageItem.isExpanded}
-        onClick={() => null} // TODO
         indent={pageItem.level}
         isActive={isRowActive(pageItem)}
         to={pageItem.url ? `${baseUrl}/${pageItem.url}` : undefined}
