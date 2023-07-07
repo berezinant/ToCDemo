@@ -11,7 +11,7 @@ export function Navigation(): JSX.Element {
     <ul className={styles.navigation}>
       {error && <div>{error.toString()}</div>}
       {loading && <Skeleton />}
-      {!loading && tocData && <TocTree tocData={tocData} />}
+      {!loading && tocData && <TocTree baseUrl="/article" tocData={tocData} />}
     </ul>
   );
 }
