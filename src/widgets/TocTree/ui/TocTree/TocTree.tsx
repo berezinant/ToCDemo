@@ -1,15 +1,16 @@
 import { JSX, useCallback, useEffect, useMemo, useState } from 'react';
 import { TocDataDto, TocPageDto, TocTreeView } from '../../../../entities/toc';
 import { useDebounce } from '../../../../shared/hooks';
-import { Input } from '../../../../shared/ui/Input/Input';
+import { Input } from '../../../../shared/ui';
 import { findOccurrences } from '../../../../shared/utils';
 import { buildTocTree, TreeNode } from '../../models';
 
 interface TocTreeProps {
   tocData: TocDataDto;
+  baseUrl?: string;
 }
 
-export function TocTree({ tocData }: TocTreeProps): JSX.Element {
+export function TocTree({ tocData, baseUrl }: TocTreeProps): JSX.Element {
   const fullTocTree = useMemo(() => buildTocTree(tocData), [tocData]);
   const [tocTree, setTocTree] = useState<TreeNode[]>(fullTocTree);
 
@@ -48,7 +49,7 @@ export function TocTree({ tocData }: TocTreeProps): JSX.Element {
         placeholder="Search..."
       />
       <hr />
-      <TocTreeView baseUrl="/article" isRowActive={isRowActive} tocTree={tocTree} />
+      <TocTreeView baseUrl={baseUrl} isRowActive={isRowActive} tocTree={tocTree} />
     </>
   );
 }
