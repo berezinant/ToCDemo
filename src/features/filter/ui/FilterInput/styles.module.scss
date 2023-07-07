@@ -1,0 +1,15 @@
+.input {
+  position: sticky;
+  top: 0;
+  margin-top: calc(var(--gap-2-75) * -1);
+  margin-bottom: var(--gap-2);
+  border: none;
+  border-bottom: 1px solid var(--border-color-1);
+  z-index: 1;
+  outline: none;
+
+  &:focus-within {
+    outline: 2px solid var(--color-accent);
+    outline-offset: -2px;
+  }
+}

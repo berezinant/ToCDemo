@@ -1,1 +1,1 @@
-export type IconName = 'arrow-down';
+export type IconName = 'arrow-down' | 'search';

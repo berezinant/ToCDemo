@@ -2,8 +2,8 @@ import { produce } from 'immer';
 import { JSX, useCallback, useEffect, useMemo, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { TocDataDto, TocPageDto, TocTreeView } from '../../../../entities/toc';
+import { FilterInput } from '../../../../features/filter';
 import { useDebounce } from '../../../../shared/hooks';
-import { Input } from '../../../../shared/ui';
 import { buildFilteredTree, buildTocTree, expandParentNodes, TreeNode } from '../../models';
 
 interface TocTreeProps {
@@ -47,13 +47,12 @@ export function TocTree({ tocData, baseUrl }: TocTreeProps): JSX.Element {
 
   return (
     <>
-      <Input
+      <FilterInput
         value={searchQuery}
         onChange={(e) => setSearchQuery(e.target.value)}
         type="search"
         placeholder="Search..."
       />
-      <hr />
       <TocTreeView baseUrl={baseUrl} isRowActive={isRowActive} tocTree={tocTree} />
     </>
   );
