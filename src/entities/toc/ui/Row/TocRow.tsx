@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { JSX, ReactNode } from 'react';
+import { JSX, ReactNode, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../../../../shared/ui';
 import styles from './styles.module.scss';
@@ -7,22 +7,15 @@ import styles from './styles.module.scss';
 interface TocRowProps {
   title: ReactNode;
   to?: string | undefined;
-  isExpanded?: boolean;
+  defaultExpanded?: boolean;
   isActive?: boolean;
   children?: JSX.Element | JSX.Element[] | null;
-  onClick?: () => void;
   indent?: number;
 }
 
-export function TocRow({
-  title,
-  to,
-  isExpanded,
-  isActive,
-  onClick = () => null,
-  children,
-  indent = 0,
-}: TocRowProps): JSX.Element {
+export function TocRow({ title, to, defaultExpanded, isActive, children, indent = 0 }: TocRowProps): JSX.Element {
+  const [isExpanded, setIsExpanded] = useState<boolean>(!!defaultExpanded);
+  const toggleExpanded = () => setIsExpanded((prev) => !prev);
   const className = cx(styles.row, { [styles.expanded]: isExpanded, [styles.active]: isActive });
   const hasChildren = children ? (Array.isArray(children) ? children.length > 0 : true) : false;
   const titleRow = (
@@ -39,13 +32,13 @@ export function TocRow({
   return (
     <>
       {to !== undefined ? (
-        <Link to={to} onClick={onClick} className={className}>
+        <Link to={to} onClick={toggleExpanded} className={className}>
           {titleRow}
         </Link>
       ) : (
         <div
-          onClick={onClick}
-          onKeyDown={(e) => e.key === 'Enter' && onClick?.()}
+          onClick={toggleExpanded}
+          onKeyDown={(e) => e.key === 'Enter' && toggleExpanded()}
           className={className}
           tabIndex={0}
           role="button"
