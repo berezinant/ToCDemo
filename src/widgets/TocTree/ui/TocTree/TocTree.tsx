@@ -36,7 +36,7 @@ export function TocTree({ tocData }: TocTreeProps): JSX.Element {
 
   const isRowActive = useCallback((page: TocPageDto) => {
     const url = window.location.pathname;
-    return url.endsWith(page.url);
+    return url.endsWith(`/${page.url}`);
   }, []);
 
   return (

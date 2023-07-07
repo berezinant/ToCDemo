@@ -3,26 +3,24 @@ function spanMap(string: string): string {
 }
 
 export function mapSubstrings(
-  string: string,
+  originalString: string,
   occurrences: number[][],
   map: (string: string) => string = spanMap
 ): string {
+  if (!occurrences || occurrences.length === 0) {
+    return originalString;
+  }
   let result = '';
   let lastIndex = 0;
 
   occurrences.forEach(([start, end]) => {
-    // Добавляем часть строки до начала подстроки
-    result += string.slice(lastIndex, start);
-
-    // Оборачиваем подстроку в тэг <span>
-    const substring = string.slice(start, end + 1);
+    result += originalString.slice(lastIndex, start);
+    const substring = originalString.slice(start, end + 1);
     result += map(substring);
-
     lastIndex = end + 1;
   });
 
-  // Добавляем оставшуюся часть строки после последней подстроки
-  result += string.slice(lastIndex);
+  result += originalString.slice(lastIndex);
 
   return result;
 }

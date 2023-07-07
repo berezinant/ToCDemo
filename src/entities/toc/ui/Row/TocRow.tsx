@@ -1,11 +1,11 @@
 import cx from 'classnames';
-import { JSX } from 'react';
+import { JSX, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 import { Icon } from '../../../../shared/ui';
 import styles from './styles.module.scss';
 
 interface TocRowProps {
-  title: string;
+  title: ReactNode;
   to?: string | undefined;
   isExpanded?: boolean;
   isActive?: boolean;
