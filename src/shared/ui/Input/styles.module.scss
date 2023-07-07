@@ -1,3 +1,26 @@
 .input {
   display: block;
+  padding: 22px 16px;
+  width: 100%;
+  background: var(--background-color-1);
+  color: var(--text-color-1);
+
+  &.withicon {
+    padding-left: var(--gap-5);
+  }
+}
+
+.wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.icon {
+  position: absolute;
+  left: var(--gap-2);
+  top: 0;
+  z-index: 2;
 }
