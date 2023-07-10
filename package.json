@@ -4,6 +4,7 @@
   "description": "Table of contents demo component",
   "main": "index.ts",
   "scripts": {
+    "create-env": "cp .env.template .env",
     "lint": "eslint --ext src/**/*.{ts,tsx}",
     "lint:fix": "eslint --fix --ext src/**/*.{ts,tsx}",
     "prettier": "prettier --write 'src/**/*.{ts,tsx,css,scss}'",
