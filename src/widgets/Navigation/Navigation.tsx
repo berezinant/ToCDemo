@@ -1,4 +1,5 @@
 import { JSX } from 'react';
+import { BASE_URL } from '../../app';
 import { tocTransport, TocDataDto } from '../../entities/toc';
 import { useFetch } from '../../shared/hooks';
 import { Skeleton } from '../../shared/ui';
@@ -11,7 +12,7 @@ export function Navigation(): JSX.Element {
     <ul className={styles.navigation}>
       {error && <div>{error.toString()}</div>}
       {loading && <Skeleton />}
-      {!loading && tocData && <TocTree baseUrl="/article" tocData={tocData} />}
+      {!loading && tocData && <TocTree baseUrl={`${BASE_URL}article`} tocData={tocData} />}
     </ul>
   );
 }
