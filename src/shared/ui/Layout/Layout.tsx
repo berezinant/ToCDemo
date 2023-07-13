@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, memo } from 'react';
 import { Footer } from '../../../widgets/Footer';
 import { Header } from '../../../widgets/Header';
 import { Navigation } from '../../../widgets/Navigation';
@@ -11,11 +11,11 @@ interface LayoutProps {
   footer?: JSX.Element;
 }
 
-export function Layout({
-  header = Header(),
+export function LayoutComponent({
+  header = <Header />,
   children,
-  nav = Navigation(),
-  footer = Footer(),
+  nav = <Navigation />,
+  footer = <Footer />,
 }: LayoutProps): JSX.Element {
   return (
     <div className={styles.layout}>
@@ -26,3 +26,5 @@ export function Layout({
     </div>
   );
 }
+
+export const Layout = memo(LayoutComponent);

@@ -1,4 +1,4 @@
-import { JSX } from 'react';
+import { JSX, memo } from 'react';
 import { BASE_URL } from '../../app';
 import { tocTransport, TocDataDto } from '../../entities/toc';
 import { useFetch } from '../../shared/hooks';
@@ -6,7 +6,7 @@ import { Skeleton } from '../../shared/ui';
 import { TocTree } from '../tocTree';
 import styles from './styles.module.scss';
 
-export function Navigation(): JSX.Element {
+export function NavigationComponent(): JSX.Element {
   const { data: tocData, error, loading } = useFetch<TocDataDto>(tocTransport.getTocData);
   return (
     <ul className={styles.navigation}>
@@ -16,3 +16,5 @@ export function Navigation(): JSX.Element {
     </ul>
   );
 }
+
+export const Navigation = memo(NavigationComponent);
