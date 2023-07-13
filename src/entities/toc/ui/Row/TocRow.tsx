@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { JSX, ReactNode, RefObject, useEffect, useState } from 'react';
+import { JSX, memo, ReactNode, RefObject, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useScrollIntoView } from '../../../../shared/hooks';
 import { Icon } from '../../../../shared/ui';
@@ -14,7 +14,14 @@ interface TocRowProps {
   indent?: number;
 }
 
-export function TocRow({ title, to, defaultExpanded, isActive, children, indent = 0 }: TocRowProps): JSX.Element {
+export function TocRowComponent({
+  title,
+  to,
+  defaultExpanded,
+  isActive,
+  children,
+  indent = 0,
+}: TocRowProps): JSX.Element {
   const [isExpanded, setIsExpanded] = useState<boolean>(!!defaultExpanded);
   const toggleExpanded = () => setIsExpanded((prev) => !prev);
 
@@ -62,3 +69,5 @@ export function TocRow({ title, to, defaultExpanded, isActive, children, indent 
     </>
   );
 }
+
+export const TocRow = memo(TocRowComponent);

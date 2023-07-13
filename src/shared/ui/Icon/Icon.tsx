@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { JSX } from 'react';
+import { JSX, memo } from 'react';
 import styles from './styles.module.scss';
 import { IconName } from './types';
 
@@ -19,10 +19,12 @@ const iconContent: Record<IconName, JSX.Element> = {
   ),
 };
 
-export function Icon({ name, className = '', size = 16 }: IconProps): JSX.Element | null {
+export function IconComponent({ name, className = '', size = 16 }: IconProps): JSX.Element | null {
   return iconContent[name] ? (
     <svg className={cx(className, styles.icon)} width={size} height={size} viewBox="0 0 16 16">
       {iconContent[name]}
     </svg>
   ) : null;
 }
+
+export const Icon = memo(IconComponent);

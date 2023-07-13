@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { JSX } from 'react';
+import { JSX, memo } from 'react';
 import { mapSubstrings } from '../../../../shared/utils/map-substrings';
 import { TreeNode } from '../../models';
 import styles from './styles.module.scss';
@@ -8,7 +8,7 @@ interface TitleProps {
   pageItem: TreeNode;
 }
 
-export function Title({ pageItem }: TitleProps): JSX.Element {
+export function TitleComponent({ pageItem }: TitleProps): JSX.Element {
   return (
     <span
       dangerouslySetInnerHTML={{
@@ -21,3 +21,5 @@ export function Title({ pageItem }: TitleProps): JSX.Element {
 function highlightMap(string: string): string {
   return `<span class="${cx(styles.highlight)}">${string}</span>`;
 }
+
+export const Title = memo(TitleComponent);
