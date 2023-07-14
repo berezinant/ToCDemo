@@ -3,7 +3,7 @@ export type TocDataDto = {
   topLevelIds: string[];
 };
 
-type TocPageId = string;
+export type TocPageId = string;
 
 type TocEntitiesDto = {
   pages: Record<TocPageId, TocPageDto>;
