@@ -1,6 +1,6 @@
 import cx from 'classnames';
 import { JSX, memo } from 'react';
-import { mapSubstrings } from '../../../../shared/utils/map-substrings';
+import { mapSubstrings } from '../../../../shared/utils';
 import { TreeNode } from '../../models';
 import styles from './styles.module.scss';
 
